@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipient Details</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 500px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 24px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: bold;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+        }
+        
+        button {
+            flex: 1;
+            padding: 12px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn {
+            background-color: #667eea;
+            color: white;
+        }
+        
+        .submit-btn:hover {
+            background-color: #5568d3;
+        }
+        
+        .cancel-btn {
+            background-color: #e74c3c;
+            color: white;
+        }
+        
+        .cancel-btn:hover {
+            background-color: #c0392b;
+        }
+        
+        .success-message {
+            display: none;
+            text-align: center;
+            color: #27ae60;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Recipient Details</h1>
+        <form id="recipientForm">
+            <div class="form-group">
+                <label for="name">Full Name *</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="bloodGroup">Blood Group *</label>
+                <select id="bloodGroup" name="bloodGroup" required>
+                    <option value="">Select Blood Group</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="units">Units of Blood Required *</label>
+                <input type="number" id="units" name="units" placeholder="Enter number of units" min="1" max="10" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" pattern="[0-9]{10}" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="location">Location/Address *</label>
+                <textarea id="location" name="location" placeholder="Enter your location or address" rows="3" required></textarea>
+            </div>
+            
+            <div class="button-group">
+                <button type="submit" class="submit-btn">Submit</button>
+                <button type="button" class="cancel-btn" onclick="closeWindow()">Cancel</button>
+            </div>
+            
+            <div class="success-message" id="successMessage">
+                ✓ Recipient details submitted successfully!
+            </div>
+        </form>
+    </div>
+    
+    <script>
+        document.getElementById('recipientForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                bloodGroup: document.getElementById('bloodGroup').value,
+                units: document.getElementById('units').value,
+                phone: document.getElementById('phone').value,
+                location: document.getElementById('location').value
+            };
+            
+            // Log or send data (you can modify this to send to a server)
+            console.log('Recipient Details:', formData);
+            
+            // Show success message
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // Close window after 2 seconds
+            setTimeout(function() {
+                closeWindow();
+            }, 2000);
+            
+            // Optional: Save to localStorage
+            localStorage.setItem('recipientDetails', JSON.stringify(formData));
+        });
+        
+        function closeWindow() {
+            // Close the window if opened as a popup
+            window.close();
+            
+            // Or redirect to previous page if opened normally
+            if (!window.closed) {
+                window.history.back();
+            }
+        }
+    </script>
+</body>
+</html>

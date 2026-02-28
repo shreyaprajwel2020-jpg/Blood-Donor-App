@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blood Donor App</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .logo {
+      font-size: 5rem;
+      margin-bottom: 30px;
+      animation: bounce 2s infinite;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      color: white;
+      margin-bottom: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .tagline {
+      font-size: 1.3rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 50px;
+      font-weight: 300;
+    }
+
+    .get-started-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 50px;
+      background: white;
+      color: #667eea;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      gap: 12px;
+    }
+
+    .get-started-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+      background: #f0f0f0;
+    }
+
+    .get-started-btn:active {
+      transform: translateY(-1px);
+    }
+
+    .arrow {
+      font-size: 1.5rem;
+      animation: slideRight 1.5s infinite;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    @keyframes slideRight {
+      0%, 100% {
+        transform: translateX(0);
+      }
+      50% {
+        transform: translateX(10px);
+      }
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      .logo {
+        font-size: 4rem;
+      }
+
+      .tagline {
+        font-size: 1.1rem;
+        margin-bottom: 40px;
+      }
+
+      .get-started-btn {
+        padding: 15px 35px;
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .logo {
+        font-size: 3rem;
+        margin-bottom: 20px;
+      }
+
+      .tagline {
+        font-size: 1rem;
+        margin-bottom: 30px;
+      }
+
+      .get-started-btn {
+        padding: 12px 30px;
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="logo">🩸</div>
+    <h1>Blood Donor App</h1>
+    <p class="tagline">Save Lives by Sharing Blood</p>
+    <button class="get-started-btn" onclick="getStarted()">
+      Get Started
+      <span class="arrow">→</span>
+    </button></div>
+  </div>
+
+  <script>
+    function getStarted() {
+      alert('Welcome! Redirecting to app...');
+      // You can replace this with actual navigation
+      // window.location.href = 'app.html';
+    }
+  </script>
+
+</body>
+</html>
